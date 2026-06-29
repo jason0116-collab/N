@@ -1,3 +1,6 @@
+# IDE/로컬 설정
+.claude/
+
 # Python
 __pycache__/
 *.pyc
