@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-06-29T08:08:56.125Z",
+  "timestamp": "2026-06-29T12:41:46.643Z",
   "sk_square": {
     "code": "402340",
     "price": {
       "code": "402340",
       "name": "SK스퀘어",
-      "price": 1653000,
-      "change": -3.9,
-      "change_price": -67000,
+      "price": 1640000,
+      "change": -4.65,
+      "change_price": -80000,
       "regular_price": 1640000,
-      "volume": 376267,
+      "volume": 1230388,
       "market": "코스피",
-      "market_status": "NXT 애프터마켓",
-      "is_nxt": true,
-      "traded_at": "2026-06-29T17:08:55.388563+09:00",
-      "source": "네이버금융(NXT 시간외)"
+      "market_status": "장마감",
+      "is_nxt": false,
+      "traded_at": "2026-06-29T15:30:00+09:00",
+      "source": "네이버금융(KRX)"
     },
     "shares": {
       "issued": 131958386,
@@ -27,24 +27,24 @@
     "price": {
       "code": "000660",
       "name": "SK하이닉스",
-      "price": 2634000,
-      "change": -1.46,
-      "change_price": -39000,
+      "price": 2628000,
+      "change": -1.68,
+      "change_price": -45000,
       "regular_price": 2628000,
-      "volume": 2450221,
+      "volume": 5216768,
       "market": "코스피",
-      "market_status": "NXT 애프터마켓",
-      "is_nxt": true,
-      "traded_at": "2026-06-29T17:08:55.372176+09:00",
-      "source": "네이버금융(NXT 시간외)"
+      "market_status": "장마감",
+      "is_nxt": false,
+      "traded_at": "2026-06-29T15:30:00+09:00",
+      "source": "네이버금융(KRX)"
     }
   },
   "holding": {
     "company": "SK하이닉스(주)",
     "shares": 146100000,
     "ratio": 20.07,
-    "market_value": 384827400000000,
-    "hynix_unit_price": 2634000
+    "market_value": 383950800000000,
+    "hynix_unit_price": 2628000
   },
   "other_investments": [
     {
@@ -79,11 +79,11 @@
   "other_value": 5130000000000,
   "other_value_source": "SK스퀘어 IR (sksquare.com/kor/ir/nav.do)",
   "nav": {
-    "total": 389957400000000,
-    "per_share": 2955154,
-    "current_price": 1653000,
-    "discount_rate": -44.06,
-    "hynix_stake_value": 384827400000000,
+    "total": 389080800000000,
+    "per_share": 2948511,
+    "current_price": 1640000,
+    "discount_rate": -44.38,
+    "hynix_stake_value": 383950800000000,
     "other_value": 5130000000000,
     "shares_for_nav": 131958386,
     "dart_period": ""
