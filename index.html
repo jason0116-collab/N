@@ -405,14 +405,14 @@
         function applyPriceUpdates(data) {
             const sq = data.sk_square_price || {};
             const hy = data.sk_hynix_price || {};
-            setText('kpiSqPrice', formatPrice(sq.price));
+            setText('kpiSqPrice', formatMan(sq.price));
             setChange('kpiSqChange', sq.change);
-            setText('kpiHyPrice', formatPrice(hy.price));
+            setText('kpiHyPrice', formatMan(hy.price));
             setChange('kpiHyChange', hy.change);
             if (data.nav) {
                 setText('discountRate', `${data.nav.discount_rate.toFixed(1)}%`);
-                setText('heroStockPrice', formatJeon(data.nav.current_price));
-                setText('heroNavPerShare', formatJeon(data.nav.per_share));
+                setText('heroStockPrice', formatMan(data.nav.current_price) + '만원');
+                setText('heroNavPerShare', formatMan(data.nav.per_share) + '만원');
                 setText('kpiDiscount', `${data.nav.discount_rate.toFixed(2)}%`);
             }
         }
@@ -441,8 +441,8 @@
             // Hero 섹션
             document.getElementById('hero').style.display = 'block';
             setText('discountRate', hasNav ? `${nav.discount_rate.toFixed(1)}%` : '—');
-            setText('heroStockPrice', formatJeon(hasNav ? nav.current_price : sq.price));
-            setText('heroNavPerShare', hasNav ? formatJeon(nav.per_share) : '—');
+            setText('heroStockPrice', formatMan(hasNav ? nav.current_price : sq.price) + '만원');
+            setText('heroNavPerShare', hasNav ? formatMan(nav.per_share) + '만원' : '—');
             setText('heroTotalNav', hasNav ? formatJo(nav.total) : 'DART 키 필요');
 
             // 경고 배너
@@ -468,8 +468,8 @@
                     <div class="card">
                         <h3>SK스퀘어 주가 <span style="color:#1E64C8;">(실시간)</span></h3>
                         <div class="metric">
-                            <div class="metric-value" id="kpiSqPrice">${formatPrice(sq.price)}</div>
-                            <div class="metric-unit">원</div>
+                            <div class="metric-value" id="kpiSqPrice">${formatMan(sq.price)}</div>
+                            <div class="metric-unit">만원</div>
                         </div>
                         <div class="metric-change ${(sq.change||0) >= 0 ? 'positive' : 'negative'}" id="kpiSqChange">
                             ${(sq.change||0) >= 0 ? '▲' : '▼'} ${Math.abs(sq.change||0).toFixed(2)}%
@@ -479,8 +479,8 @@
                     <div class="card">
                         <h3>SK하이닉스 주가 <span style="color:#1E64C8;">(실시간)</span></h3>
                         <div class="metric">
-                            <div class="metric-value" id="kpiHyPrice">${formatPrice(hy.price)}</div>
-                            <div class="metric-unit">원</div>
+                            <div class="metric-value" id="kpiHyPrice">${formatMan(hy.price)}</div>
+                            <div class="metric-unit">만원</div>
                         </div>
                         <div class="metric-change ${(hy.change||0) >= 0 ? 'positive' : 'negative'}" id="kpiHyChange">
                             ${(hy.change||0) >= 0 ? '▲' : '▼'} ${Math.abs(hy.change||0).toFixed(2)}%
@@ -514,7 +514,7 @@
                                 </div>
                                 <div class="info-item">
                                     <div class="label">주당 NAV</div>
-                                    <div class="value">${hasNav ? formatJeon(nav.per_share) : '—'}</div>
+                                    <div class="value">${hasNav ? formatMan(nav.per_share) + '만원' : '—'}</div>
                                 </div>
                                 <div class="info-item">
                                     <div class="label">발행주식수</div>
@@ -552,7 +552,7 @@
                                 </div>
                                 <div class="info-item">
                                     <div class="label">현재 주가 (KRX)</div>
-                                    <div class="value">${formatPrice(hy.price)}원</div>
+                                    <div class="value">${formatMan(hy.price)}만원</div>
                                 </div>
                                 <div class="info-item">
                                     <div class="label">지분 시장가치</div>
@@ -644,6 +644,12 @@
         function formatJeon(value) {
             if (!value) return '0천원';
             return Math.round(value / 1000).toLocaleString() + '천원';
+        }
+
+        // 만원 단위(숫자만): "159.1"  → 단위 라벨/접미사는 호출부에서 '만원' 부여
+        function formatMan(value) {
+            if (!value) return '0';
+            return (value / 10000).toLocaleString(undefined, { maximumFractionDigits: 1 });
         }
 
         // 조/억원 단위: "382.1조원" / "7,900억원"
