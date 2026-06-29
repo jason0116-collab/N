@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-06-29T04:55:36.018Z",
+  "sk_square": {
+    "code": "402340",
+    "price": {
+      "code": "402340",
+      "name": "SK스퀘어",
+      "price": 1624000,
+      "change": -5.58,
+      "change_price": -96000,
+      "volume": 899038,
+      "market": "코스피",
+      "market_status": "장중",
+      "traded_at": "2026-06-29T13:55:35.852117+09:00",
+      "source": "네이버금융(KRX 시세)"
+    },
+    "shares": {
+      "issued": 131958386,
+      "treasury": 0,
+      "distributed": 131958386
+    }
+  },
+  "sk_hynix": {
+    "code": "000660",
+    "price": {
+      "code": "000660",
+      "name": "SK하이닉스",
+      "price": 2553000,
+      "change": -4.49,
+      "change_price": -120000,
+      "volume": 3671079,
+      "market": "코스피",
+      "market_status": "장중",
+      "traded_at": "2026-06-29T13:55:35.852896+09:00",
+      "source": "네이버금융(KRX 시세)"
+    }
+  },
+  "holding": {
+    "company": "SK하이닉스(주)",
+    "shares": 146100000,
+    "ratio": 20.07,
+    "market_value": 372993300000000,
+    "hynix_unit_price": 2553000
+  },
+  "other_investments": [
+    {
+      "company": "티맵모빌리티",
+      "value_jo": 1.46
+    },
+    {
+      "company": "SK쉴더스",
+      "value_jo": 1.02
+    },
+    {
+      "company": "SK플래닛",
+      "value_jo": 0.62
+    },
+    {
+      "company": "원스토어",
+      "value_jo": 0.42
+    },
+    {
+      "company": "콘텐츠웨이브",
+      "value_jo": 0.26
+    },
+    {
+      "company": "기타",
+      "value_jo": 0.56
+    },
+    {
+      "company": "순현금(순차입금)",
+      "value_jo": 0.79
+    }
+  ],
+  "other_value": 5130000000000,
+  "other_value_source": "SK스퀘어 IR (sksquare.com/kor/ir/nav.do)",
+  "nav": {
+    "total": 378123300000000,
+    "per_share": 2865474,
+    "current_price": 1624000,
+    "discount_rate": -43.33,
+    "hynix_stake_value": 372993300000000,
+    "other_value": 5130000000000,
+    "shares_for_nav": 131958386,
+    "dart_period": ""
+  },
+  "data_source": "기준값(하드코딩)",
+  "warnings": []
+}

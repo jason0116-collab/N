@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Node
+node_modules/
+
+# 배포 복사본/압축
+netlify-deploy/
+*.zip

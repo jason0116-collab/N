@@ -1,0 +1,41 @@
+name: Update NAV data
+
+on:
+  # 평일 KST 09:00~16:00 (UTC 00:00~07:00) 15분마다
+  schedule:
+    - cron: '*/15 0-7 * * 1-5'
+  # 수동 실행 버튼
+  workflow_dispatch:
+  # 코드 변경 시 1회 생성 (data 변경은 제외해 무한루프 방지)
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'data/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 데이터 생성
+        run: node scripts/generate-data.js
+
+      - name: 변경분 커밋
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/nav.json data/history.json
+          git diff --staged --quiet || git commit -m "chore: update NAV data"
+          git push

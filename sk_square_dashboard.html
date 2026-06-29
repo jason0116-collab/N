@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK스퀘어 NAV 할인율</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef6 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 32px;
+            color: #0E2A47;
+            margin-bottom: 10px;
+        }
+
+        header .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, #0E2A47 0%, #1E4E8C 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .hero .discount-rate {
+            font-size: 64px;
+            font-weight: bold;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .hero .discount-rate.negative {
+            color: #FF6B35;
+        }
+
+        .hero .nav-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+
+        .hero .nav-info div {
+            text-align: center;
+        }
+
+        .hero .nav-info .label {
+            opacity: 0.8;
+            font-size: 15px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero .nav-info .value {
+            font-size: 30px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .card .metric {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .card .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0E2A47;
+            font-family: 'Courier New', monospace;
+        }
+
+        .card .metric-unit {
+            font-size: 12px;
+            color: #999;
+            font-family: 'Courier New', monospace;
+        }
+
+        .card .metric-change {
+            font-size: 14px;
+            margin-top: 10px;
+            padding: 8px;
+            background: #f5f7fa;
+            border-radius: 6px;
+            color: #666;
+        }
+
+        .card .metric-change.positive {
+            color: #3B6D11;
+            background: #eaf3de;
+        }
+
+        .card .metric-change.negative {
+            color: #D85A30;
+            background: #faece7;
+        }
+
+        .company-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .company-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .company-card .header {
+            background: linear-gradient(120deg, #0E2A47 0%, #1E4E8C 100%);
+            color: white;
+            padding: 25px;
+            border-bottom: 3px solid #5B9BD5;
+        }
+
+        .company-card .header h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .company-card .header .code {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .company-card .content {
+            padding: 25px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border-left: 3px solid #1E64C8;
+        }
+
+        .info-item .label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .info-item .value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #0E2A47;
+            font-family: 'Courier New', monospace;
+        }
+
+        .charts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .chart-container h3 {
+            font-size: 16px;
+            color: #0E2A47;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .chart-container canvas {
+            max-height: 300px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #1E64C8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #faece7;
+            color: #D85A30;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #D85A30;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .company-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hero .discount-rate {
+                font-size: 48px;
+            }
+
+            .hero .nav-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SK스퀘어 NAV 할인율</h1>
+            <p class="subtitle">실시간 주가 + 지분율 기반 NAV 할인율 분석</p>
+        </header>
+
+        <div id="hero" class="hero" style="display:none;">
+            <div>NAV 할인율</div>
+            <div class="discount-rate negative" id="discountRate">-37.9%</div>
+            <div class="nav-info">
+                <div>
+                    <div class="label">주가</div>
+                    <div class="value" id="heroStockPrice">1,799천원</div>
+                </div>
+                <div>
+                    <div class="label">주당 NAV</div>
+                    <div class="value" id="heroNavPerShare">2,895천원</div>
+                </div>
+                <div>
+                    <div class="label">총 NAV</div>
+                    <div class="value" id="heroTotalNav">--</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="loading">대시보드 데이터를 불러오는 중입니다</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>업데이트: <span id="updateTime">--:--:--</span> | SK스퀘어 투자 분석 대시보드</p>
+    </footer>
+
+    <script>
+        // GitHub Pages(정적) 전용: GitHub Actions가 생성·커밋한 정적 JSON을 읽는다.
+        const DATA_BASE = 'data';
+        const PRICE_REFRESH_MS = 30000; // KRX 주가 폴링 주기(30초)
+        let dashboardData = null;
+        let discountHistoryChart = null;
+        let priceTimer = null;
+
+        // ===== 초기화 =====
+        async function initDashboard() {
+            try {
+                const response = await axios.get(`${DATA_BASE}/nav.json?t=${Date.now()}`);
+                dashboardData = response.data;
+                renderDashboard();
+                updateTime();
+                startPricePolling();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                const onFile = !location.protocol.startsWith('http');
+                if (onFile) {
+                    renderError(
+                        '⚠️ <b>파일을 직접 열면(file://) 데이터를 못 읽습니다.</b><br><br>' +
+                        'GitHub Pages 주소로 접속하거나, 로컬에서는 폴더에서 ' +
+                        '<code>python -m http.server</code> 실행 후 ' +
+                        '<code>http://localhost:8000/sk_square_dashboard.html</code> 로 여세요.'
+                    );
+                } else {
+                    renderError(
+                        '데이터 파일(<code>data/nav.json</code>)을 불러올 수 없습니다.<br>' +
+                        'GitHub Actions가 데이터를 생성·커밋했는지 확인하세요 (저장소 Actions 탭).'
+                    );
+                }
+            }
+        }
+
+        // ===== KRX 주가 실시간 폴링 =====
+        function startPricePolling() {
+            if (priceTimer) clearInterval(priceTimer);
+            priceTimer = setInterval(refreshPrices, PRICE_REFRESH_MS);
+        }
+
+        async function refreshPrices() {
+            try {
+                const { data } = await axios.get(`${DATA_BASE}/nav.json?t=${Date.now()}`);
+                dashboardData = data;
+                applyPriceUpdates({
+                    sk_square_price: data.sk_square.price,
+                    sk_hynix_price: data.sk_hynix.price,
+                    nav: data.nav,
+                });
+                updateTime();
+            } catch (e) {
+                console.warn('데이터 갱신 실패:', e.message);
+            }
+        }
+
+        // 전체 리렌더 없이 주가/할인율 숫자만 갱신
+        function applyPriceUpdates(data) {
+            const sq = data.sk_square_price || {};
+            const hy = data.sk_hynix_price || {};
+            setText('kpiSqPrice', formatPrice(sq.price));
+            setChange('kpiSqChange', sq.change);
+            setText('kpiHyPrice', formatPrice(hy.price));
+            setChange('kpiHyChange', hy.change);
+            if (data.nav) {
+                setText('discountRate', `${data.nav.discount_rate.toFixed(1)}%`);
+                setText('heroStockPrice', formatJeon(data.nav.current_price));
+                setText('heroNavPerShare', formatJeon(data.nav.per_share));
+                setText('kpiDiscount', `${data.nav.discount_rate.toFixed(2)}%`);
+            }
+        }
+
+        function setText(id, value) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = value;
+        }
+
+        function setChange(id, change) {
+            const el = document.getElementById(id);
+            if (!el || change === undefined || change === null) return;
+            el.className = `metric-change ${change >= 0 ? 'positive' : 'negative'}`;
+            el.textContent = `${change >= 0 ? '▲' : '▼'} ${Math.abs(change).toFixed(2)}%`;
+        }
+
+        // ===== 대시보드 렌더링 =====
+        function renderDashboard() {
+            if (!dashboardData) return;
+
+            const { sk_square, sk_hynix, nav, holding, other_investments, warnings } = dashboardData;
+            const sq = sk_square.price || {};
+            const hy = sk_hynix.price || {};
+            const hasNav = !!nav;
+
+            // Hero 섹션
+            document.getElementById('hero').style.display = 'block';
+            setText('discountRate', hasNav ? `${nav.discount_rate.toFixed(1)}%` : '—');
+            setText('heroStockPrice', formatJeon(hasNav ? nav.current_price : sq.price));
+            setText('heroNavPerShare', hasNav ? formatJeon(nav.per_share) : '—');
+            setText('heroTotalNav', hasNav ? formatJo(nav.total) : 'DART 키 필요');
+
+            // 경고 배너
+            const warnHtml = (warnings && warnings.length)
+                ? `<div class="error">⚠️ ${warnings.join('<br/>')}</div>` : '';
+
+            // 포트폴리오 구성 — SK하이닉스(지분율·실시간 가치) + 하이닉스 외(SK스퀘어 IR)
+            const portLines = [];
+            if (holding) {
+                portLines.push(`• ${holding.company}: ${holding.ratio.toFixed(2)}% · ${formatJo(holding.market_value)}`);
+            }
+            (other_investments || []).forEach(x => {
+                portLines.push(`• ${x.company}: ${x.value_jo.toFixed(2)}조원`);
+            });
+            const portHtml = portLines.length ? portLines.join('<br/>') : '데이터 없음';
+
+            const sqShares = sk_square.shares || {};
+
+            const content = `
+                ${warnHtml}
+                <!-- KPI 카드 -->
+                <div class="grid">
+                    <div class="card">
+                        <h3>SK스퀘어 주가 <span style="color:#1E64C8;">(실시간)</span></h3>
+                        <div class="metric">
+                            <div class="metric-value" id="kpiSqPrice">${formatPrice(sq.price)}</div>
+                            <div class="metric-unit">원</div>
+                        </div>
+                        <div class="metric-change ${(sq.change||0) >= 0 ? 'positive' : 'negative'}" id="kpiSqChange">
+                            ${(sq.change||0) >= 0 ? '▲' : '▼'} ${Math.abs(sq.change||0).toFixed(2)}%
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>SK하이닉스 주가 <span style="color:#1E64C8;">(실시간)</span></h3>
+                        <div class="metric">
+                            <div class="metric-value" id="kpiHyPrice">${formatPrice(hy.price)}</div>
+                            <div class="metric-unit">원</div>
+                        </div>
+                        <div class="metric-change ${(hy.change||0) >= 0 ? 'positive' : 'negative'}" id="kpiHyChange">
+                            ${(hy.change||0) >= 0 ? '▲' : '▼'} ${Math.abs(hy.change||0).toFixed(2)}%
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>NAV 할인율</h3>
+                        <div class="metric">
+                            <div class="metric-value" id="kpiDiscount" style="color: #D85A30;">${hasNav ? nav.discount_rate.toFixed(2) + '%' : '—'}</div>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                            출처: ${dashboardData.data_source || '기준값'}${nav && nav.dart_period ? ' · ' + nav.dart_period : ''}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 회사 정보 -->
+                <div class="company-row">
+                    <!-- SK스퀘어 -->
+                    <div class="company-card">
+                        <div class="header">
+                            <h2>SK스퀘어</h2>
+                            <div class="code">코드: 402340 · NAV 산정 = 주가 × DART 보유주식수</div>
+                        </div>
+                        <div class="content">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <div class="label">총 NAV</div>
+                                    <div class="value">${hasNav ? formatJo(nav.total) : '—'}</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="label">주당 NAV</div>
+                                    <div class="value">${hasNav ? formatJeon(nav.per_share) : '—'}</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="label">발행주식수</div>
+                                    <div class="value">${formatShares(sqShares.issued)}</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="label">유통주식수</div>
+                                    <div class="value">${formatShares(sqShares.distributed)}</div>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
+                                <div class="label" style="margin-bottom: 10px;">포트폴리오 구성 (하이닉스 외: SK스퀘어 IR 기준)</div>
+                                <div style="font-size: 13px; color: #666; line-height: 1.8;">
+                                    ${portHtml}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SK하이닉스 (보유 지분) -->
+                    <div class="company-card">
+                        <div class="header">
+                            <h2>SK하이닉스 보유 지분</h2>
+                            <div class="code">코드: 000660 · SK스퀘어 보유 지분</div>
+                        </div>
+                        <div class="content">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <div class="label">지분율</div>
+                                    <div class="value">${holding ? holding.ratio.toFixed(2) + '%' : '—'}</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="label">보유주식수</div>
+                                    <div class="value">${holding ? formatShares(holding.shares) : '—'}</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="label">현재 주가 (KRX)</div>
+                                    <div class="value">${formatPrice(hy.price)}원</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="label">지분 시장가치</div>
+                                    <div class="value">${holding ? formatJo(holding.market_value) : '—'}</div>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
+                                <div class="label" style="margin-bottom: 10px;">산식</div>
+                                <div style="font-size: 13px; color: #666; line-height: 1.8;">
+                                    지분 시장가치 = 보유주식수 × SK하이닉스 현재가<br/>
+                                    NAV = 지분 시장가치 + 기타 출자 장부가액<br/>
+                                    할인율 = (주가 − 주당NAV) / 주당NAV
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAV 할인율 추이 -->
+                <div class="chart-container" style="margin-bottom: 30px;">
+                    <h3>NAV 할인율 추이</h3>
+                    <canvas id="discountHistoryChart"></canvas>
+                </div>
+            `;
+
+            document.getElementById('content').innerHTML = content;
+
+            setTimeout(createDiscountHistoryChart, 100);
+        }
+
+        // ===== NAV 할인율 추이 차트 =====
+        async function createDiscountHistoryChart() {
+            const ctx = document.getElementById('discountHistoryChart');
+            if (!ctx) return;
+
+            let series = [];
+            try {
+                const { data } = await axios.get(`${DATA_BASE}/history.json?t=${Date.now()}`);
+                series = data.series || [];
+            } catch (e) {
+                console.warn('NAV 추이 로드 실패:', e.message);
+            }
+
+            const labels = series.map(x => x.date);
+            const values = series.map(x => x.discount_rate);
+
+            if (discountHistoryChart) discountHistoryChart.destroy();
+            discountHistoryChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [{
+                        label: 'NAV 할인율',
+                        data: values,
+                        borderColor: '#1E64C8',
+                        backgroundColor: 'rgba(30, 100, 200, 0.10)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 4,
+                        pointBackgroundColor: '#1E64C8'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    interaction: { intersect: false, mode: 'index' },
+                    scales: {
+                        y: { ticks: { callback: (v) => v + '%' } },
+                        x: { ticks: { maxTicksLimit: 8, autoSkip: true, maxRotation: 0 } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: (c) => `할인율 ${c.parsed.y.toFixed(1)}%` } }
+                    }
+                }
+            });
+        }
+
+        // ===== 유틸 함수 =====
+        // 원 단위 정수 표시: "1,799,000"
+        function formatPrice(value) {
+            if (!value) return '0';
+            return Math.round(value).toLocaleString();
+        }
+
+        // 천원 단위: "1,799천원"
+        function formatJeon(value) {
+            if (!value) return '0천원';
+            return Math.round(value / 1000).toLocaleString() + '천원';
+        }
+
+        // 조/억원 단위: "382.1조원" / "7,900억원"
+        function formatJo(value) {
+            if (!value) return '0원';
+            const jo = 1e12, eok = 1e8;
+            if (Math.abs(value) >= jo) return (value / jo).toFixed(1) + '조원';
+            if (Math.abs(value) >= eok) return Math.round(value / eok).toLocaleString() + '억원';
+            return Math.round(value).toLocaleString() + '원';
+        }
+
+        // 주식수: "131.96M주" / "143,645,679주"
+        function formatShares(value) {
+            if (!value) return '—';
+            if (value >= 1e6) return (value / 1e6).toFixed(2) + 'M주';
+            return value.toLocaleString() + '주';
+        }
+
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('updateTime').textContent = now.toLocaleTimeString('ko-KR');
+        }
+
+        function renderError(message) {
+            document.getElementById('content').innerHTML = `
+                <div class="error">${message}</div>
+            `;
+        }
+
+        // ===== 페이지 로드 =====
+        window.addEventListener('load', initDashboard);
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

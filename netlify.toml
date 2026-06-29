@@ -1,0 +1,19 @@
+# Netlify 배포 설정
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# /api/* 요청을 서버리스 함수로 연결 (HTML의 API_BASE = origin + '/api')
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# 루트 접속 시 대시보드 HTML 제공
+[[redirects]]
+  from = "/"
+  to = "/sk_square_dashboard.html"
+  status = 200

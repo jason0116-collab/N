@@ -1,0 +1,726 @@
+{
+  "data_source": "기준값(하드코딩)",
+  "count": 120,
+  "series": [
+    {
+      "date": "2025-12-30",
+      "price": 368000,
+      "per_share_nav": 759642,
+      "discount_rate": -51.56
+    },
+    {
+      "date": "2026-01-02",
+      "price": 392000,
+      "per_share_nav": 788428,
+      "discount_rate": -50.28
+    },
+    {
+      "date": "2026-01-05",
+      "price": 416000,
+      "per_share_nav": 809464,
+      "discount_rate": -48.61
+    },
+    {
+      "date": "2026-01-06",
+      "price": 432000,
+      "per_share_nav": 842679,
+      "discount_rate": -48.73
+    },
+    {
+      "date": "2026-01-07",
+      "price": 429500,
+      "per_share_nav": 860394,
+      "discount_rate": -50.08
+    },
+    {
+      "date": "2026-01-08",
+      "price": 430500,
+      "per_share_nav": 875894,
+      "discount_rate": -50.85
+    },
+    {
+      "date": "2026-01-09",
+      "price": 430500,
+      "per_share_nav": 862608,
+      "discount_rate": -50.09
+    },
+    {
+      "date": "2026-01-12",
+      "price": 427500,
+      "per_share_nav": 868144,
+      "discount_rate": -50.76
+    },
+    {
+      "date": "2026-01-13",
+      "price": 426500,
+      "per_share_nav": 855965,
+      "discount_rate": -50.17
+    },
+    {
+      "date": "2026-01-14",
+      "price": 435500,
+      "per_share_nav": 860394,
+      "discount_rate": -49.38
+    },
+    {
+      "date": "2026-01-15",
+      "price": 429500,
+      "per_share_nav": 868144,
+      "discount_rate": -50.53
+    },
+    {
+      "date": "2026-01-16",
+      "price": 446500,
+      "per_share_nav": 875894,
+      "discount_rate": -49.02
+    },
+    {
+      "date": "2026-01-19",
+      "price": 435500,
+      "per_share_nav": 884752,
+      "discount_rate": -50.78
+    },
+    {
+      "date": "2026-01-20",
+      "price": 427000,
+      "per_share_nav": 861501,
+      "discount_rate": -50.44
+    },
+    {
+      "date": "2026-01-21",
+      "price": 430000,
+      "per_share_nav": 858180,
+      "discount_rate": -49.89
+    },
+    {
+      "date": "2026-01-22",
+      "price": 446500,
+      "per_share_nav": 874787,
+      "discount_rate": -48.96
+    },
+    {
+      "date": "2026-01-23",
+      "price": 445500,
+      "per_share_nav": 888073,
+      "discount_rate": -49.84
+    },
+    {
+      "date": "2026-01-26",
+      "price": 441000,
+      "per_share_nav": 853751,
+      "discount_rate": -48.35
+    },
+    {
+      "date": "2026-01-27",
+      "price": 473000,
+      "per_share_nav": 924610,
+      "discount_rate": -48.84
+    },
+    {
+      "date": "2026-01-28",
+      "price": 504000,
+      "per_share_nav": 970004,
+      "discount_rate": -48.04
+    },
+    {
+      "date": "2026-01-29",
+      "price": 531000,
+      "per_share_nav": 992147,
+      "discount_rate": -46.48
+    },
+    {
+      "date": "2026-01-30",
+      "price": 570000,
+      "per_share_nav": 1045291,
+      "discount_rate": -45.47
+    },
+    {
+      "date": "2026-02-02",
+      "price": 505000,
+      "per_share_nav": 957825,
+      "discount_rate": -47.28
+    },
+    {
+      "date": "2026-02-03",
+      "price": 546000,
+      "per_share_nav": 1043077,
+      "discount_rate": -47.65
+    },
+    {
+      "date": "2026-02-04",
+      "price": 569000,
+      "per_share_nav": 1035326,
+      "discount_rate": -45.04
+    },
+    {
+      "date": "2026-02-05",
+      "price": 534000,
+      "per_share_nav": 971111,
+      "discount_rate": -45.01
+    },
+    {
+      "date": "2026-02-06",
+      "price": 514000,
+      "per_share_nav": 967789,
+      "discount_rate": -46.89
+    },
+    {
+      "date": "2026-02-09",
+      "price": 563000,
+      "per_share_nav": 1020933,
+      "discount_rate": -44.85
+    },
+    {
+      "date": "2026-02-10",
+      "price": 543000,
+      "per_share_nav": 1008754,
+      "discount_rate": -46.17
+    },
+    {
+      "date": "2026-02-11",
+      "price": 532000,
+      "per_share_nav": 991040,
+      "discount_rate": -46.32
+    },
+    {
+      "date": "2026-02-12",
+      "price": 570000,
+      "per_share_nav": 1022040,
+      "discount_rate": -44.23
+    },
+    {
+      "date": "2026-02-13",
+      "price": 558000,
+      "per_share_nav": 1013183,
+      "discount_rate": -44.93
+    },
+    {
+      "date": "2026-02-19",
+      "price": 566000,
+      "per_share_nav": 1028683,
+      "discount_rate": -44.98
+    },
+    {
+      "date": "2026-02-20",
+      "price": 580000,
+      "per_share_nav": 1089578,
+      "discount_rate": -46.77
+    },
+    {
+      "date": "2026-02-23",
+      "price": 580000,
+      "per_share_nav": 1091792,
+      "discount_rate": -46.88
+    },
+    {
+      "date": "2026-02-24",
+      "price": 617000,
+      "per_share_nav": 1151579,
+      "discount_rate": -46.42
+    },
+    {
+      "date": "2026-02-25",
+      "price": 647000,
+      "per_share_nav": 1165972,
+      "discount_rate": -44.51
+    },
+    {
+      "date": "2026-02-26",
+      "price": 679000,
+      "per_share_nav": 1255653,
+      "discount_rate": -45.92
+    },
+    {
+      "date": "2026-02-27",
+      "price": 645000,
+      "per_share_nav": 1213580,
+      "discount_rate": -46.85
+    },
+    {
+      "date": "2026-03-03",
+      "price": 581000,
+      "per_share_nav": 1078506,
+      "discount_rate": -46.13
+    },
+    {
+      "date": "2026-03-04",
+      "price": 507000,
+      "per_share_nav": 978861,
+      "discount_rate": -48.21
+    },
+    {
+      "date": "2026-03-05",
+      "price": 566000,
+      "per_share_nav": 1080720,
+      "discount_rate": -47.63
+    },
+    {
+      "date": "2026-03-06",
+      "price": 553000,
+      "per_share_nav": 1061898,
+      "discount_rate": -47.92
+    },
+    {
+      "date": "2026-03-09",
+      "price": 509000,
+      "per_share_nav": 964468,
+      "discount_rate": -47.22
+    },
+    {
+      "date": "2026-03-10",
+      "price": 554000,
+      "per_share_nav": 1077399,
+      "discount_rate": -48.58
+    },
+    {
+      "date": "2026-03-11",
+      "price": 565000,
+      "per_share_nav": 1096221,
+      "discount_rate": -48.46
+    },
+    {
+      "date": "2026-03-12",
+      "price": 554000,
+      "per_share_nav": 1068541,
+      "discount_rate": -48.15
+    },
+    {
+      "date": "2026-03-13",
+      "price": 534000,
+      "per_share_nav": 1046398,
+      "discount_rate": -48.97
+    },
+    {
+      "date": "2026-03-16",
+      "price": 562000,
+      "per_share_nav": 1117257,
+      "discount_rate": -49.7
+    },
+    {
+      "date": "2026-03-17",
+      "price": 587000,
+      "per_share_nav": 1112828,
+      "discount_rate": -47.25
+    },
+    {
+      "date": "2026-03-18",
+      "price": 630000,
+      "per_share_nav": 1208044,
+      "discount_rate": -47.85
+    },
+    {
+      "date": "2026-03-19",
+      "price": 611000,
+      "per_share_nav": 1160436,
+      "discount_rate": -47.35
+    },
+    {
+      "date": "2026-03-20",
+      "price": 608000,
+      "per_share_nav": 1153793,
+      "discount_rate": -47.3
+    },
+    {
+      "date": "2026-03-23",
+      "price": 557000,
+      "per_share_nav": 1071863,
+      "discount_rate": -48.03
+    },
+    {
+      "date": "2026-03-24",
+      "price": 595000,
+      "per_share_nav": 1130543,
+      "discount_rate": -47.37
+    },
+    {
+      "date": "2026-03-25",
+      "price": 605000,
+      "per_share_nav": 1140507,
+      "discount_rate": -46.95
+    },
+    {
+      "date": "2026-03-26",
+      "price": 558000,
+      "per_share_nav": 1071863,
+      "discount_rate": -47.94
+    },
+    {
+      "date": "2026-03-27",
+      "price": 544000,
+      "per_share_nav": 1059684,
+      "discount_rate": -48.66
+    },
+    {
+      "date": "2026-03-30",
+      "price": 510000,
+      "per_share_nav": 1005433,
+      "discount_rate": -49.28
+    },
+    {
+      "date": "2026-03-31",
+      "price": 466500,
+      "per_share_nav": 932360,
+      "discount_rate": -49.97
+    },
+    {
+      "date": "2026-04-01",
+      "price": 501000,
+      "per_share_nav": 1027576,
+      "discount_rate": -51.24
+    },
+    {
+      "date": "2026-04-02",
+      "price": 469500,
+      "per_share_nav": 957825,
+      "discount_rate": -50.98
+    },
+    {
+      "date": "2026-04-03",
+      "price": 483000,
+      "per_share_nav": 1008754,
+      "discount_rate": -52.12
+    },
+    {
+      "date": "2026-04-06",
+      "price": 487000,
+      "per_share_nav": 1019826,
+      "discount_rate": -52.25
+    },
+    {
+      "date": "2026-04-07",
+      "price": 499000,
+      "per_share_nav": 1053041,
+      "discount_rate": -52.61
+    },
+    {
+      "date": "2026-04-08",
+      "price": 578000,
+      "per_share_nav": 1182580,
+      "discount_rate": -51.12
+    },
+    {
+      "date": "2026-04-09",
+      "price": 560000,
+      "per_share_nav": 1143829,
+      "discount_rate": -51.04
+    },
+    {
+      "date": "2026-04-10",
+      "price": 568000,
+      "per_share_nav": 1175937,
+      "discount_rate": -51.7
+    },
+    {
+      "date": "2026-04-13",
+      "price": 580000,
+      "per_share_nav": 1190330,
+      "discount_rate": -51.27
+    },
+    {
+      "date": "2026-04-14",
+      "price": 640000,
+      "per_share_nav": 1260081,
+      "discount_rate": -49.21
+    },
+    {
+      "date": "2026-04-15",
+      "price": 665000,
+      "per_share_nav": 1296618,
+      "discount_rate": -48.71
+    },
+    {
+      "date": "2026-04-16",
+      "price": 690000,
+      "per_share_nav": 1317654,
+      "discount_rate": -47.63
+    },
+    {
+      "date": "2026-04-17",
+      "price": 682000,
+      "per_share_nav": 1287761,
+      "discount_rate": -47.04
+    },
+    {
+      "date": "2026-04-20",
+      "price": 701000,
+      "per_share_nav": 1329833,
+      "discount_rate": -47.29
+    },
+    {
+      "date": "2026-04-21",
+      "price": 718000,
+      "per_share_nav": 1394049,
+      "discount_rate": -48.5
+    },
+    {
+      "date": "2026-04-22",
+      "price": 720000,
+      "per_share_nav": 1392941,
+      "discount_rate": -48.31
+    },
+    {
+      "date": "2026-04-23",
+      "price": 728000,
+      "per_share_nav": 1395156,
+      "discount_rate": -47.82
+    },
+    {
+      "date": "2026-04-24",
+      "price": 725000,
+      "per_share_nav": 1391834,
+      "discount_rate": -47.91
+    },
+    {
+      "date": "2026-04-27",
+      "price": 789000,
+      "per_share_nav": 1469336,
+      "discount_rate": -46.3
+    },
+    {
+      "date": "2026-04-28",
+      "price": 811000,
+      "per_share_nav": 1478193,
+      "discount_rate": -45.14
+    },
+    {
+      "date": "2026-04-29",
+      "price": 830000,
+      "per_share_nav": 1470443,
+      "discount_rate": -43.55
+    },
+    {
+      "date": "2026-04-30",
+      "price": 841000,
+      "per_share_nav": 1462693,
+      "discount_rate": -42.5
+    },
+    {
+      "date": "2026-05-04",
+      "price": 991000,
+      "per_share_nav": 1640947,
+      "discount_rate": -39.61
+    },
+    {
+      "date": "2026-05-06",
+      "price": 1089000,
+      "per_share_nav": 1811451,
+      "discount_rate": -39.88
+    },
+    {
+      "date": "2026-05-07",
+      "price": 1099000,
+      "per_share_nav": 1870130,
+      "discount_rate": -41.23
+    },
+    {
+      "date": "2026-05-08",
+      "price": 1098000,
+      "per_share_nav": 1905560,
+      "discount_rate": -42.38
+    },
+    {
+      "date": "2026-05-11",
+      "price": 1187000,
+      "per_share_nav": 2120350,
+      "discount_rate": -44.02
+    },
+    {
+      "date": "2026-05-12",
+      "price": 1126000,
+      "per_share_nav": 2070528,
+      "discount_rate": -45.62
+    },
+    {
+      "date": "2026-05-13",
+      "price": 1190000,
+      "per_share_nav": 2226638,
+      "discount_rate": -46.56
+    },
+    {
+      "date": "2026-05-14",
+      "price": 1171000,
+      "per_share_nav": 2219995,
+      "discount_rate": -47.25
+    },
+    {
+      "date": "2026-05-15",
+      "price": 1098000,
+      "per_share_nav": 2052813,
+      "discount_rate": -46.51
+    },
+    {
+      "date": "2026-05-18",
+      "price": 1093000,
+      "per_share_nav": 2076064,
+      "discount_rate": -47.35
+    },
+    {
+      "date": "2026-05-19",
+      "price": 1020000,
+      "per_share_nav": 1970883,
+      "discount_rate": -48.25
+    },
+    {
+      "date": "2026-05-20",
+      "price": 1029000,
+      "per_share_nav": 1970883,
+      "discount_rate": -47.79
+    },
+    {
+      "date": "2026-05-21",
+      "price": 1179000,
+      "per_share_nav": 2186780,
+      "discount_rate": -46.09
+    },
+    {
+      "date": "2026-05-22",
+      "price": 1185000,
+      "per_share_nav": 2187887,
+      "discount_rate": -45.84
+    },
+    {
+      "date": "2026-05-26",
+      "price": 1181000,
+      "per_share_nav": 2310783,
+      "discount_rate": -48.89
+    },
+    {
+      "date": "2026-05-27",
+      "price": 1276000,
+      "per_share_nav": 2522252,
+      "discount_rate": -49.41
+    },
+    {
+      "date": "2026-05-28",
+      "price": 1237000,
+      "per_share_nav": 2573182,
+      "discount_rate": -51.93
+    },
+    {
+      "date": "2026-05-29",
+      "price": 1233000,
+      "per_share_nav": 2621897,
+      "discount_rate": -52.97
+    },
+    {
+      "date": "2026-06-01",
+      "price": 1256000,
+      "per_share_nav": 2655112,
+      "discount_rate": -52.7
+    },
+    {
+      "date": "2026-06-02",
+      "price": 1346000,
+      "per_share_nav": 2651791,
+      "discount_rate": -49.24
+    },
+    {
+      "date": "2026-06-04",
+      "price": 1361000,
+      "per_share_nav": 2583146,
+      "discount_rate": -47.31
+    },
+    {
+      "date": "2026-06-05",
+      "price": 1258000,
+      "per_share_nav": 2330712,
+      "discount_rate": -46.03
+    },
+    {
+      "date": "2026-06-08",
+      "price": 1118000,
+      "per_share_nav": 2154672,
+      "discount_rate": -48.11
+    },
+    {
+      "date": "2026-06-09",
+      "price": 1269000,
+      "per_share_nav": 2491251,
+      "discount_rate": -49.06
+    },
+    {
+      "date": "2026-06-10",
+      "price": 1183000,
+      "per_share_nav": 2306354,
+      "discount_rate": -48.71
+    },
+    {
+      "date": "2026-06-11",
+      "price": 1228000,
+      "per_share_nav": 2365034,
+      "discount_rate": -48.08
+    },
+    {
+      "date": "2026-06-12",
+      "price": 1358000,
+      "per_share_nav": 2419285,
+      "discount_rate": -43.87
+    },
+    {
+      "date": "2026-06-15",
+      "price": 1413000,
+      "per_share_nav": 2572075,
+      "discount_rate": -45.06
+    },
+    {
+      "date": "2026-06-16",
+      "price": 1501000,
+      "per_share_nav": 2676148,
+      "discount_rate": -43.91
+    },
+    {
+      "date": "2026-06-17",
+      "price": 1596000,
+      "per_share_nav": 2830044,
+      "discount_rate": -43.61
+    },
+    {
+      "date": "2026-06-18",
+      "price": 1700000,
+      "per_share_nav": 3011620,
+      "discount_rate": -43.55
+    },
+    {
+      "date": "2026-06-19",
+      "price": 1780000,
+      "per_share_nav": 3099086,
+      "discount_rate": -42.56
+    },
+    {
+      "date": "2026-06-22",
+      "price": 1970000,
+      "per_share_nav": 3270697,
+      "discount_rate": -39.77
+    },
+    {
+      "date": "2026-06-23",
+      "price": 1832000,
+      "per_share_nav": 2867688,
+      "discount_rate": -36.12
+    },
+    {
+      "date": "2026-06-24",
+      "price": 1799000,
+      "per_share_nav": 2895367,
+      "discount_rate": -37.87
+    },
+    {
+      "date": "2026-06-25",
+      "price": 1899000,
+      "per_share_nav": 3268483,
+      "discount_rate": -41.9
+    },
+    {
+      "date": "2026-06-26",
+      "price": 1720000,
+      "per_share_nav": 2998334,
+      "discount_rate": -42.63
+    },
+    {
+      "date": "2026-06-29",
+      "price": 1631000,
+      "per_share_nav": 2874331,
+      "discount_rate": -43.26
+    }
+  ]
+}

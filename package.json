@@ -1,0 +1,9 @@
+{
+  "name": "sk-square-nav-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SK스퀘어 NAV 할인율 대시보드 (Netlify Functions)",
+  "engines": {
+    "node": ">=18"
+  }
+}
