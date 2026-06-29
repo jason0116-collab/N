@@ -155,18 +155,29 @@ def get_stock_price(stock_code):
             return {'code': stock_code, 'price': 0, 'change': 0.0, 'error': '시세 없음'}
         d = datas[0]
         ex = d.get('stockExchangeType') or {}
+
+        # NXT 시간외(프리/애프터마켓)가 열려 있으면 그 현재가를, 아니면 정규장(KRX) 종가 사용
+        om = d.get('overMarketPriceInfo') or {}
+        over_open = om.get('overMarketStatus') == 'OPEN' and _to_int(om.get('overPrice')) > 0
+        if over_open:
+            session = 'NXT 프리마켓' if om.get('tradingSessionType') == 'PRE_MARKET' else 'NXT 애프터마켓'
+        else:
+            session = _MARKET_STATUS_KO.get(d.get('marketStatus'), d.get('marketStatus'))
+
         result = {
             'code': stock_code,
             'name': d.get('stockName'),
-            'price': _to_int(d.get('closePrice')),
-            'change': _to_float(d.get('fluctuationsRatio')),
-            'change_price': _to_int(d.get('compareToPreviousClosePrice')),
-            'volume': _to_int(d.get('accumulatedTradingVolume')),
+            'price': _to_int(om.get('overPrice')) if over_open else _to_int(d.get('closePrice')),
+            'change': _to_float(om.get('fluctuationsRatio')) if over_open else _to_float(d.get('fluctuationsRatio')),
+            'change_price': _to_int(om.get('compareToPreviousClosePrice')) if over_open else _to_int(d.get('compareToPreviousClosePrice')),
+            'regular_price': _to_int(d.get('closePrice')),
+            'volume': _to_int(om.get('accumulatedTradingVolume')) if over_open else _to_int(d.get('accumulatedTradingVolume')),
             'market': ex.get('nameKor') or '코스피',
-            'market_status': _MARKET_STATUS_KO.get(d.get('marketStatus'), d.get('marketStatus')),
-            'traded_at': d.get('localTradedAt'),
+            'market_status': session,
+            'is_nxt': bool(over_open),
+            'traded_at': om.get('localTradedAt') if over_open else d.get('localTradedAt'),
             'date': datetime.now().strftime('%Y-%m-%d'),
-            'source': '네이버금융(KRX 시세)',
+            'source': '네이버금융(NXT 시간외)' if over_open else '네이버금융(KRX)',
         }
         cache_set(cache_key, result)
         return result

@@ -51,17 +51,27 @@ async function fetchPrice(code) {
     const d = (j.datas || [])[0];
     if (!d) return { code, price: 0, change: 0, error: '시세 없음' };
     const ex = d.stockExchangeType || {};
+
+    // NXT 시간외(프리/애프터마켓)가 열려 있으면 그 현재가를, 아니면 정규장(KRX) 종가를 사용
+    const om = d.overMarketPriceInfo;
+    const overOpen = om && om.overMarketStatus === 'OPEN' && toInt(om.overPrice) > 0;
+    const sessionKo = overOpen
+      ? (om.tradingSessionType === 'PRE_MARKET' ? 'NXT 프리마켓' : 'NXT 애프터마켓')
+      : (MARKET_STATUS_KO[d.marketStatus] || d.marketStatus);
+
     return {
       code,
       name: d.stockName,
-      price: toInt(d.closePrice),
-      change: toFloat(d.fluctuationsRatio),
-      change_price: toInt(d.compareToPreviousClosePrice),
-      volume: toInt(d.accumulatedTradingVolume),
+      price: overOpen ? toInt(om.overPrice) : toInt(d.closePrice),
+      change: overOpen ? toFloat(om.fluctuationsRatio) : toFloat(d.fluctuationsRatio),
+      change_price: overOpen ? toInt(om.compareToPreviousClosePrice) : toInt(d.compareToPreviousClosePrice),
+      regular_price: toInt(d.closePrice),
+      volume: overOpen ? toInt(om.accumulatedTradingVolume) : toInt(d.accumulatedTradingVolume),
       market: ex.nameKor || '코스피',
-      market_status: MARKET_STATUS_KO[d.marketStatus] || d.marketStatus,
-      traded_at: d.localTradedAt,
-      source: '네이버금융(KRX 시세)',
+      market_status: sessionKo,
+      is_nxt: !!overOpen,
+      traded_at: overOpen ? om.localTradedAt : d.localTradedAt,
+      source: overOpen ? '네이버금융(NXT 시간외)' : '네이버금융(KRX)',
     };
   } catch (e) {
     return { code, price: 0, change: 0, error: String(e.message || e) };

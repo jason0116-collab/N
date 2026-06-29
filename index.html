@@ -342,7 +342,7 @@
     </div>
 
     <footer>
-        <p>업데이트: <span id="updateTime">--:--:--</span> | SK스퀘어 투자 분석 대시보드</p>
+        <p>데이터 기준: <span id="updateTime">--:--:--</span> | SK스퀘어 투자 분석 대시보드</p>
     </footer>
 
     <script>
@@ -466,7 +466,7 @@
                 <!-- KPI 카드 -->
                 <div class="grid">
                     <div class="card">
-                        <h3>SK스퀘어 주가 <span style="color:#1E64C8;">(실시간)</span></h3>
+                        <h3>SK스퀘어 주가 <span style="color:#1E64C8;">${sq.market_status || ''}</span></h3>
                         <div class="metric">
                             <div class="metric-value" id="kpiSqPrice">${formatMan(sq.price)}</div>
                             <div class="metric-unit">만원</div>
@@ -477,7 +477,7 @@
                     </div>
 
                     <div class="card">
-                        <h3>SK하이닉스 주가 <span style="color:#1E64C8;">(실시간)</span></h3>
+                        <h3>SK하이닉스 주가 <span style="color:#1E64C8;">${hy.market_status || ''}</span></h3>
                         <div class="metric">
                             <div class="metric-value" id="kpiHyPrice">${formatMan(hy.price)}</div>
                             <div class="metric-unit">만원</div>
@@ -669,8 +669,13 @@
         }
 
         function updateTime() {
-            const now = new Date();
-            document.getElementById('updateTime').textContent = now.toLocaleTimeString('ko-KR');
+            const el = document.getElementById('updateTime');
+            if (!el) return;
+            if (dashboardData && dashboardData.timestamp) {
+                el.textContent = new Date(dashboardData.timestamp).toLocaleString('ko-KR');
+            } else {
+                el.textContent = new Date().toLocaleTimeString('ko-KR');
+            }
         }
 
         function renderError(message) {
