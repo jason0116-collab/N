@@ -347,8 +347,15 @@
 
     <script>
         // GitHub Pages(정적) 전용: GitHub Actions가 생성·커밋한 정적 JSON을 읽는다.
+        // ▼ 실시간 모드: 여기에 Cloudflare Worker 주소를 넣으면 수초 단위 실시간으로 동작.
+        //   비워두면 기존 정적(GitHub Actions가 ~10분마다 생성한 data/*.json) 모드.
+        //   예) const WORKER_URL = 'https://sk-nav.본인이름.workers.dev';
+        const WORKER_URL = '';
+        const LIVE = !!WORKER_URL;
         const DATA_BASE = 'data';
-        const PRICE_REFRESH_MS = 30000; // KRX 주가 폴링 주기(30초)
+        const navUrl = () => (LIVE ? `${WORKER_URL}/nav?t=${Date.now()}` : `${DATA_BASE}/nav.json?t=${Date.now()}`);
+        const historyUrl = () => (LIVE ? `${WORKER_URL}/history?t=${Date.now()}` : `${DATA_BASE}/history.json?t=${Date.now()}`);
+        const PRICE_REFRESH_MS = LIVE ? 10000 : 60000; // 실시간 10초 / 정적 60초
         let dashboardData = null;
         let discountHistoryChart = null;
         let priceTimer = null;
@@ -356,7 +363,7 @@
         // ===== 초기화 =====
         async function initDashboard() {
             try {
-                const response = await axios.get(`${DATA_BASE}/nav.json?t=${Date.now()}`);
+                const response = await axios.get(navUrl());
                 dashboardData = response.data;
                 renderDashboard();
                 updateTime();
@@ -388,7 +395,7 @@
 
         async function refreshPrices() {
             try {
-                const { data } = await axios.get(`${DATA_BASE}/nav.json?t=${Date.now()}`);
+                const { data } = await axios.get(navUrl());
                 dashboardData = data;
                 applyPriceUpdates({
                     sk_square_price: data.sk_square.price,
@@ -590,7 +597,7 @@
 
             let series = [];
             try {
-                const { data } = await axios.get(`${DATA_BASE}/history.json?t=${Date.now()}`);
+                const { data } = await axios.get(historyUrl());
                 series = data.series || [];
             } catch (e) {
                 console.warn('NAV 추이 로드 실패:', e.message);
