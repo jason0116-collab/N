@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-06-30T01:33:41.040Z",
+  "timestamp": "2026-06-30T04:07:05.661Z",
   "sk_square": {
     "code": "402340",
     "price": {
       "code": "402340",
       "name": "SK스퀘어",
-      "price": 1605000,
-      "change": -2.13,
-      "change_price": -35000,
-      "regular_price": 1605000,
-      "volume": 392339,
+      "price": 1722000,
+      "change": 5,
+      "change_price": 82000,
+      "regular_price": 1722000,
+      "volume": 851167,
       "market": "코스피",
       "market_status": "장중",
       "is_nxt": false,
-      "traded_at": "2026-06-30T10:33:40.872213+09:00",
+      "traded_at": "2026-06-30T13:07:04.923334+09:00",
       "source": "네이버금융(KRX 정규장)"
     },
     "shares": {
@@ -27,15 +27,15 @@
     "price": {
       "code": "000660",
       "name": "SK하이닉스",
-      "price": 2618000,
-      "change": -0.38,
-      "change_price": -10000,
-      "regular_price": 2618000,
-      "volume": 1733542,
+      "price": 2666000,
+      "change": 1.45,
+      "change_price": 38000,
+      "regular_price": 2666000,
+      "volume": 2829021,
       "market": "코스피",
       "market_status": "장중",
       "is_nxt": false,
-      "traded_at": "2026-06-30T10:33:40.874377+09:00",
+      "traded_at": "2026-06-30T13:07:04.92854+09:00",
       "source": "네이버금융(KRX 정규장)"
     }
   },
@@ -43,8 +43,8 @@
     "company": "SK하이닉스(주)",
     "shares": 146100000,
     "ratio": 20.07,
-    "market_value": 382489800000000,
-    "hynix_unit_price": 2618000
+    "market_value": 389502600000000,
+    "hynix_unit_price": 2666000
   },
   "other_investments": [
     {
@@ -79,11 +79,11 @@
   "other_value": 5130000000000,
   "other_value_source": "SK스퀘어 IR (sksquare.com/kor/ir/nav.do)",
   "nav": {
-    "total": 387619800000000,
-    "per_share": 2937440,
-    "current_price": 1605000,
-    "discount_rate": -45.36,
-    "hynix_stake_value": 382489800000000,
+    "total": 394632600000000,
+    "per_share": 2990584,
+    "current_price": 1722000,
+    "discount_rate": -42.42,
+    "hynix_stake_value": 389502600000000,
     "other_value": 5130000000000,
     "shares_for_nav": 131958386,
     "dart_period": ""
