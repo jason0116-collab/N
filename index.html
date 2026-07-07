@@ -350,7 +350,9 @@
         // GitHub Pages(정적) 전용: GitHub Actions가 생성·커밋한 정적 JSON을 읽는다.
         // ▼ 실시간 모드: dashboard-config.js의 workerUrl에 Cloudflare Worker 주소를 넣으면 1분마다 최신 주가를 가져옵니다.
         //   비워두면 기존 정적(GitHub Actions가 생성한 data/*.json) 모드입니다.
-        //   예) workerUrl: "https://sk-square-nav-dashboard.본인계정.workers.dev"        const CONFIG = window.NAV_DASHBOARD_CONFIG || {};
+        //   예) workerUrl: "https://sk-square-nav-dashboard.본인계정.workers.dev"        
+        
+    const CONFIG = window.NAV_DASHBOARD_CONFIG || {};
         const WORKER_URL = String(CONFIG.workerUrl || '').replace(/\/$/, '');
         const LIVE = !!WORKER_URL;
         const DATA_BASE = 'data';
