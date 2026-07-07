@@ -355,7 +355,7 @@
         const DATA_BASE = 'data';
         const navUrl = () => (LIVE ? `${WORKER_URL}/nav?t=${Date.now()}` : `${DATA_BASE}/nav.json?t=${Date.now()}`);
         const historyUrl = () => (LIVE ? `${WORKER_URL}/history?t=${Date.now()}` : `${DATA_BASE}/history.json?t=${Date.now()}`);
-        const PRICE_REFRESH_MS = LIVE ? 10000 : 60000; // 실시간 10초 / 정적 60초
+        const PRICE_REFRESH_MS = 60000; // refresh prices every 1 minute
         let dashboardData = null;
         let discountHistoryChart = null;
         let priceTimer = null;
