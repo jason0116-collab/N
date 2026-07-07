@@ -6,6 +6,7 @@
     <title>SK스퀘어 NAV 할인율</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    <script src="dashboard-config.js"></script>
     <style>
         * {
             margin: 0;
@@ -342,20 +343,20 @@
     </div>
 
     <footer>
-        <p>데이터 기준: <span id="updateTime">--:--:--</span> | SK스퀘어 투자 분석 대시보드</p>
+        <p>데이터 기준: <span id="updateTime">--:--:--</span></p>
     </footer>
 
     <script>
         // GitHub Pages(정적) 전용: GitHub Actions가 생성·커밋한 정적 JSON을 읽는다.
-        // ▼ 실시간 모드: 여기에 Cloudflare Worker 주소를 넣으면 수초 단위 실시간으로 동작.
-        //   비워두면 기존 정적(GitHub Actions가 ~10분마다 생성한 data/*.json) 모드.
-        //   예) const WORKER_URL = 'https://sk-nav.본인이름.workers.dev';
-        const WORKER_URL = '';
+        // ▼ 실시간 모드: dashboard-config.js의 workerUrl에 Cloudflare Worker 주소를 넣으면 1분마다 최신 주가를 가져옵니다.
+        //   비워두면 기존 정적(GitHub Actions가 생성한 data/*.json) 모드입니다.
+        //   예) workerUrl: "https://sk-square-nav-dashboard.본인계정.workers.dev"        const CONFIG = window.NAV_DASHBOARD_CONFIG || {};
+        const WORKER_URL = String(CONFIG.workerUrl || '').replace(/\/$/, '');
         const LIVE = !!WORKER_URL;
         const DATA_BASE = 'data';
         const navUrl = () => (LIVE ? `${WORKER_URL}/nav?t=${Date.now()}` : `${DATA_BASE}/nav.json?t=${Date.now()}`);
         const historyUrl = () => (LIVE ? `${WORKER_URL}/history?t=${Date.now()}` : `${DATA_BASE}/history.json?t=${Date.now()}`);
-        const PRICE_REFRESH_MS = 60000; // refresh prices every 1 minute
+        const PRICE_REFRESH_MS = Number(CONFIG.refreshMs || 60000); // refresh prices every 1 minute
         let dashboardData = null;
         let discountHistoryChart = null;
         let priceTimer = null;
