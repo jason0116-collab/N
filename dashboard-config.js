@@ -1,6 +1,5 @@
 window.NAV_DASHBOARD_CONFIG = {
-  // Cloudflare Worker 배포 후 발급된 workers.dev 주소를 넣으면 GitHub Pages에서도 1분마다 최신 주가를 반영합니다.
-  // 예: workerUrl: "https://sk-square-nav-dashboard.your-subdomain.workers.dev",
-  workerUrl: "",
+  // 실시간 백엔드(Cloudtype) 주소. 브라우저가 여기로 1분마다 실시간 시세를 요청한다.
+  workerUrl: "https://port-0-nav-mqzw9q8s0ad7aed3.sel3.cloudtype.app",
   refreshMs: 60000,
 };
