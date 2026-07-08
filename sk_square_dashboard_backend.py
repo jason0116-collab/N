@@ -156,30 +156,20 @@ def get_stock_price(stock_code):
         d = datas[0]
         ex = d.get('stockExchangeType') or {}
 
-        # 정규장이 열려 있으면 정규장 주가, 정규장 마감 후 NXT가 열려 있으면 NXT 주가
-        om = d.get('overMarketPriceInfo') or {}
-        regular_open = d.get('marketStatus') == 'OPEN'
-        over_open = om.get('overMarketStatus') == 'OPEN' and _to_int(om.get('overPrice')) > 0
-        use_over = (not regular_open) and over_open
-        if use_over:
-            session = 'NXT 프리마켓' if om.get('tradingSessionType') == 'PRE_MARKET' else 'NXT 애프터마켓'
-        else:
-            session = _MARKET_STATUS_KO.get(d.get('marketStatus'), d.get('marketStatus'))
-
+        # 네이버 종목 메인 페이지의 '현재가'와 동일한 정규장(KRX) 현재가/종가를 사용 (NXT 미적용)
         result = {
             'code': stock_code,
             'name': d.get('stockName'),
-            'price': _to_int(om.get('overPrice')) if use_over else _to_int(d.get('closePrice')),
-            'change': _to_float(om.get('fluctuationsRatio')) if use_over else _to_float(d.get('fluctuationsRatio')),
-            'change_price': _to_int(om.get('compareToPreviousClosePrice')) if use_over else _to_int(d.get('compareToPreviousClosePrice')),
-            'regular_price': _to_int(d.get('closePrice')),
-            'volume': _to_int(om.get('accumulatedTradingVolume')) if use_over else _to_int(d.get('accumulatedTradingVolume')),
+            'price': _to_int(d.get('closePrice')),
+            'change': _to_float(d.get('fluctuationsRatio')),
+            'change_price': _to_int(d.get('compareToPreviousClosePrice')),
+            'volume': _to_int(d.get('accumulatedTradingVolume')),
             'market': ex.get('nameKor') or '코스피',
-            'market_status': session,
-            'is_nxt': bool(use_over),
-            'traded_at': om.get('localTradedAt') if use_over else d.get('localTradedAt'),
+            'market_status': _MARKET_STATUS_KO.get(d.get('marketStatus'), d.get('marketStatus')),
+            'is_nxt': False,
+            'traded_at': d.get('localTradedAt'),
             'date': datetime.now().strftime('%Y-%m-%d'),
-            'source': '네이버금융(NXT 시간외)' if use_over else '네이버금융(KRX 정규장)',
+            'source': '네이버금융(정규장 현재가)',
         }
         cache_set(cache_key, result)
         return result
@@ -505,6 +495,7 @@ def get_prices():
 
 
 @app.route('/api/nav-history', methods=['GET'])
+@app.route('/history', methods=['GET'])
 def get_nav_history():
     """과거 일별 주가로 계산한 NAV 할인율 시계열."""
     try:
@@ -539,6 +530,7 @@ def get_nav_history():
 
 
 @app.route('/api/nav-dashboard', methods=['GET'])
+@app.route('/nav', methods=['GET'])
 def get_nav_dashboard():
     """대시보드 전체 데이터."""
     try:
@@ -548,5 +540,6 @@ def get_nav_dashboard():
 
 
 if __name__ == '__main__':
-    # 0.0.0.0 바인딩: 같은 Wi-Fi의 휴대폰 등에서 http://<PC-IP>:5000 으로 접속 가능
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    # 0.0.0.0 바인딩 + PORT 환경변수(Cloudtype/Render 등 클라우드가 주입) 사용
+    port = int(os.getenv('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
