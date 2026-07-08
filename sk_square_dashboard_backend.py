@@ -540,6 +540,6 @@ def get_nav_dashboard():
 
 
 if __name__ == '__main__':
-    # 0.0.0.0 바인딩 + PORT 환경변수(Cloudtype/Render 등 클라우드가 주입) 사용
-    port = int(os.getenv('PORT', 5000))
+    # 0.0.0.0 바인딩 + PORT 환경변수 사용. Cloudtype 등은 8080을 기본 포트로 쓴다.
+    port = int(os.getenv('PORT', 8080))
     app.run(host='0.0.0.0', port=port, debug=False)
