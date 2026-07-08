@@ -12,7 +12,9 @@ import re
 import time
 import zipfile
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
+
+KST = timezone(timedelta(hours=9))  # 한국 표준시
 
 import requests
 import urllib3
@@ -399,7 +401,7 @@ def build_nav_data():
     hynix_price = get_stock_price(SK_HYNIX_STOCK)
 
     result = {
-        'timestamp': datetime.now().isoformat(),
+        'timestamp': datetime.now(KST).isoformat(),  # KST(+09:00) 명시 → 브라우저가 정확히 해석
         'sk_square': {'code': SK_SQUARE_STOCK, 'price': sq_price},
         'sk_hynix': {'code': SK_HYNIX_STOCK, 'price': hynix_price},
         'holding': None,

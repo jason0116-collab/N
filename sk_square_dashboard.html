@@ -680,10 +680,11 @@
         function updateTime() {
             const el = document.getElementById('updateTime');
             if (!el) return;
+            const opt = { timeZone: 'Asia/Seoul' };
             if (dashboardData && dashboardData.timestamp) {
-                el.textContent = new Date(dashboardData.timestamp).toLocaleString('ko-KR');
+                el.textContent = new Date(dashboardData.timestamp).toLocaleString('ko-KR', opt);
             } else {
-                el.textContent = new Date().toLocaleTimeString('ko-KR');
+                el.textContent = new Date().toLocaleTimeString('ko-KR', opt);
             }
         }
 
