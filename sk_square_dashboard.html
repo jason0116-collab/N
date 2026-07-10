@@ -355,9 +355,36 @@
         const WORKER_URL = String(CONFIG.workerUrl || '').replace(/\/$/, '');
         const LIVE = !!WORKER_URL;
         const DATA_BASE = 'data';
-        const navUrl = () => (LIVE ? `${WORKER_URL}/nav?t=${Date.now()}` : `${DATA_BASE}/nav.json?t=${Date.now()}`);
-        const historyUrl = () => (LIVE ? `${WORKER_URL}/history?t=${Date.now()}` : `${DATA_BASE}/history.json?t=${Date.now()}`);
         const PRICE_REFRESH_MS = Number(CONFIG.refreshMs || 60000); // refresh prices every 1 minute
+        let dataSource = LIVE ? 'live' : 'static'; // 현재 데이터 출처: live(실시간) / fallback(백엔드 실패→정적) / static
+
+        // 실시간 백엔드(workerUrl) 우선, 실패하면 정적 데이터(GitHub)로 자동 폴백
+        async function fetchNav() {
+            if (LIVE) {
+                try {
+                    const { data } = await axios.get(`${WORKER_URL}/nav?t=${Date.now()}`, { timeout: 7000 });
+                    dataSource = 'live';
+                    return data;
+                } catch (e) {
+                    console.warn('실시간 백엔드 실패 → 정적 폴백:', e.message);
+                }
+            }
+            const { data } = await axios.get(`${DATA_BASE}/nav.json?t=${Date.now()}`);
+            dataSource = LIVE ? 'fallback' : 'static';
+            return data;
+        }
+        async function fetchHistory() {
+            if (LIVE) {
+                try {
+                    const { data } = await axios.get(`${WORKER_URL}/history?t=${Date.now()}`, { timeout: 7000 });
+                    return data;
+                } catch (e) {
+                    console.warn('history 실시간 실패 → 정적 폴백:', e.message);
+                }
+            }
+            const { data } = await axios.get(`${DATA_BASE}/history.json?t=${Date.now()}`);
+            return data;
+        }
         let dashboardData = null;
         let discountHistoryChart = null;
         let priceTimer = null;
@@ -365,8 +392,7 @@
         // ===== 초기화 =====
         async function initDashboard() {
             try {
-                const response = await axios.get(navUrl());
-                dashboardData = response.data;
+                dashboardData = await fetchNav();
                 renderDashboard();
                 updateTime();
                 startPricePolling();
@@ -382,9 +408,11 @@
                     );
                 } else {
                     renderError(
-                        '데이터 파일(<code>data/nav.json</code>)을 불러올 수 없습니다.<br>' +
-                        'GitHub Actions가 데이터를 생성·커밋했는지 확인하세요 (저장소 Actions 탭).'
+                        '데이터를 불러올 수 없습니다. 잠시 후 자동으로 다시 시도합니다.<br>' +
+                        '(실시간 백엔드와 정적 데이터 모두 응답하지 않는 상태)'
                     );
+                    // 정적 데이터라도 다시 시도하도록 폴링은 계속 돌린다
+                    startPricePolling();
                 }
             }
         }
@@ -397,13 +425,18 @@
 
         async function refreshPrices() {
             try {
-                const { data } = await axios.get(navUrl());
+                const data = await fetchNav();
                 dashboardData = data;
-                applyPriceUpdates({
-                    sk_square_price: data.sk_square.price,
-                    sk_hynix_price: data.sk_hynix.price,
-                    nav: data.nav,
-                });
+                // 첫 로드가 실패해 화면이 비어 있으면 전체 렌더, 아니면 숫자만 갱신
+                if (!document.getElementById('kpiSqPrice')) {
+                    renderDashboard();
+                } else {
+                    applyPriceUpdates({
+                        sk_square_price: data.sk_square.price,
+                        sk_hynix_price: data.sk_hynix.price,
+                        nav: data.nav,
+                    });
+                }
                 updateTime();
             } catch (e) {
                 console.warn('데이터 갱신 실패:', e.message);
@@ -599,7 +632,7 @@
 
             let series = [];
             try {
-                const { data } = await axios.get(historyUrl());
+                const data = await fetchHistory();
                 series = data.series || [];
             } catch (e) {
                 console.warn('NAV 추이 로드 실패:', e.message);
@@ -681,11 +714,16 @@
             const el = document.getElementById('updateTime');
             if (!el) return;
             const opt = { timeZone: 'Asia/Seoul' };
+            let t;
             if (dashboardData && dashboardData.timestamp) {
-                el.textContent = new Date(dashboardData.timestamp).toLocaleString('ko-KR', opt);
+                t = new Date(dashboardData.timestamp).toLocaleString('ko-KR', opt);
             } else {
-                el.textContent = new Date().toLocaleTimeString('ko-KR', opt);
+                t = new Date().toLocaleTimeString('ko-KR', opt);
             }
+            // 실시간/정적 출처 표시
+            let tag = '';
+            if (LIVE) tag = (dataSource === 'live') ? ' · 실시간' : ' · 정적(백엔드 대기 중)';
+            el.textContent = t + tag;
         }
 
         function renderError(message) {
