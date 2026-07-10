@@ -1,0 +1,9 @@
+# Railway(Nixpacks) 빌드 설정
+# 이 저장소엔 package.json(Node)도 있어 자동감지가 Node로 갈 수 있으므로 Python으로 강제 지정한다.
+providers = ["python"]
+
+[phases.install]
+cmds = ["pip install -r requirements.txt"]
+
+[start]
+cmd = "python sk_square_dashboard_backend.py"
