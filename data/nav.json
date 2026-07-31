@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-31T06:33:10.122Z",
+  "timestamp": "2026-07-31T09:30:30.333Z",
   "sk_square": {
     "code": "402340",
     "price": {
@@ -8,7 +8,7 @@
       "price": 1038000,
       "change": 29.91,
       "change_price": 239000,
-      "volume": 1033441,
+      "volume": 1033476,
       "market": "코스피",
       "market_status": "장마감",
       "is_nxt": false,
@@ -29,7 +29,7 @@
       "price": 1718000,
       "change": 29.95,
       "change_price": 396000,
-      "volume": 10307337,
+      "volume": 10347350,
       "market": "코스피",
       "market_status": "장마감",
       "is_nxt": false,
