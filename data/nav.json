@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-08-12T12:02:47.247Z",
+  "timestamp": "2026-08-12T23:39:21.453Z",
   "sk_square": {
     "code": "402340",
     "price": {
       "code": "402340",
       "name": "SK스퀘어",
       "price": 1024000,
-      "change": 8.36,
-      "change_price": 79000,
-      "volume": 708475,
+      "change": 0,
+      "change_price": 0,
+      "volume": 0,
       "market": "코스피",
-      "market_status": "장마감",
+      "market_status": "PREOPEN",
       "is_nxt": false,
-      "traded_at": "2026-08-12T15:30:00+09:00",
+      "traded_at": "2026-08-13T08:39:20.735584+09:00",
       "source": "네이버금융(정규장 현재가)"
     },
     "shares": {
@@ -27,13 +27,13 @@
       "code": "000660",
       "name": "SK하이닉스",
       "price": 1504000,
-      "change": 5.54,
-      "change_price": 79000,
-      "volume": 4204301,
+      "change": 0,
+      "change_price": 0,
+      "volume": 0,
       "market": "코스피",
-      "market_status": "장마감",
+      "market_status": "PREOPEN",
       "is_nxt": false,
-      "traded_at": "2026-08-12T15:30:00+09:00",
+      "traded_at": "2026-08-13T08:39:20.74837+09:00",
       "source": "네이버금융(정규장 현재가)"
     }
   },
@@ -75,7 +75,7 @@
     }
   ],
   "other_value": 5130000000000,
-  "other_value_source": "폴백 기준값 (IR 조회 실패: HTTP 504)",
+  "other_value_source": "SK스퀘어 IR (sksquare.com/kor/ir/nav.do)",
   "nav": {
     "total": 224864400000000,
     "per_share": 1704055,
