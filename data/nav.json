@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-12T11:12:32.863Z",
+  "timestamp": "2026-08-12T12:02:47.247Z",
   "sk_square": {
     "code": "402340",
     "price": {
@@ -75,7 +75,7 @@
     }
   ],
   "other_value": 5130000000000,
-  "other_value_source": "SK스퀘어 IR (sksquare.com/kor/ir/nav.do)",
+  "other_value_source": "폴백 기준값 (IR 조회 실패: HTTP 504)",
   "nav": {
     "total": 224864400000000,
     "per_share": 1704055,
