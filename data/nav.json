@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-14T11:55:46.639Z",
+  "timestamp": "2026-08-16T23:18:08.397Z",
   "sk_square": {
     "code": "402340",
     "price": {
@@ -55,11 +55,7 @@
     },
     {
       "company": "SK플래닛",
-      "value_jo": 0.62
-    },
-    {
-      "company": "원스토어",
-      "value_jo": 0.42
+      "value_jo": 0.61
     },
     {
       "company": "콘텐츠웨이브",
@@ -67,22 +63,22 @@
     },
     {
       "company": "기타",
-      "value_jo": 0.56
+      "value_jo": 0.66
     },
     {
       "company": "순현금(순차입금)",
-      "value_jo": 0.79
+      "value_jo": 0.8
     }
   ],
-  "other_value": 5130000000000,
-  "other_value_source": "폴백 기준값 (IR 조회 실패: fetch failed)",
+  "other_value": 4810000000000,
+  "other_value_source": "SK스퀘어 IR (sksquare.com/kor/ir/nav.do)",
   "nav": {
-    "total": 245464500000000,
-    "per_share": 1860166,
+    "total": 245144500000000,
+    "per_share": 1857741,
     "current_price": 1154000,
-    "discount_rate": -37.96,
+    "discount_rate": -37.88,
     "hynix_stake_value": 240334500000000,
-    "other_value": 5130000000000,
+    "other_value": 4810000000000,
     "shares_for_nav": 131958386,
     "dart_period": ""
   },
