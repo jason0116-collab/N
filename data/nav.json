@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-08-17T23:42:43.672Z",
+  "timestamp": "2026-08-18T00:00:31.485Z",
   "sk_square": {
     "code": "402340",
     "price": {
       "code": "402340",
       "name": "SK스퀘어",
-      "price": 1154000,
-      "change": 0,
-      "change_price": 0,
-      "volume": 0,
+      "price": 1192000,
+      "change": 3.29,
+      "change_price": 38000,
+      "volume": 16953,
       "market": "코스피",
-      "market_status": "PREOPEN",
+      "market_status": "장중",
       "is_nxt": false,
-      "traded_at": "2026-08-18T08:42:42.963478+09:00",
+      "traded_at": "2026-08-18T09:00:30.851433+09:00",
       "source": "네이버금융(정규장 현재가)"
     },
     "shares": {
@@ -26,14 +26,14 @@
     "price": {
       "code": "000660",
       "name": "SK하이닉스",
-      "price": 1645000,
-      "change": 0,
-      "change_price": 0,
-      "volume": 0,
+      "price": 1732000,
+      "change": 5.29,
+      "change_price": 87000,
+      "volume": 204916,
       "market": "코스피",
-      "market_status": "PREOPEN",
+      "market_status": "장중",
       "is_nxt": false,
-      "traded_at": "2026-08-18T08:42:42.96763+09:00",
+      "traded_at": "2026-08-18T09:00:30.849244+09:00",
       "source": "네이버금융(정규장 현재가)"
     }
   },
@@ -41,8 +41,8 @@
     "company": "SK하이닉스(주)",
     "shares": 146100000,
     "ratio": 20.07,
-    "market_value": 240334500000000,
-    "hynix_unit_price": 1645000
+    "market_value": 253045200000000,
+    "hynix_unit_price": 1732000
   },
   "other_investments": [
     {
@@ -73,11 +73,11 @@
   "other_value": 4810000000000,
   "other_value_source": "SK스퀘어 IR (sksquare.com/kor/ir/nav.do)",
   "nav": {
-    "total": 245144500000000,
-    "per_share": 1857741,
-    "current_price": 1154000,
-    "discount_rate": -37.88,
-    "hynix_stake_value": 240334500000000,
+    "total": 257855200000000,
+    "per_share": 1954065,
+    "current_price": 1192000,
+    "discount_rate": -39,
+    "hynix_stake_value": 253045200000000,
     "other_value": 4810000000000,
     "shares_for_nav": 131958386,
     "dart_period": ""
