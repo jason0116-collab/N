@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-19T23:42:47.040Z",
+  "timestamp": "2026-08-20T00:00:15.276Z",
   "sk_square": {
     "code": "402340",
     "price": {
@@ -10,9 +10,9 @@
       "change_price": 0,
       "volume": 0,
       "market": "코스피",
-      "market_status": "PREOPEN",
+      "market_status": "장중",
       "is_nxt": false,
-      "traded_at": "2026-08-20T08:42:46.437817+09:00",
+      "traded_at": "2026-08-20T09:00:14.643534+09:00",
       "source": "네이버금융(정규장 현재가)"
     },
     "shares": {
@@ -29,11 +29,11 @@
       "price": 1500000,
       "change": 0,
       "change_price": 0,
-      "volume": 0,
+      "volume": 4,
       "market": "코스피",
-      "market_status": "PREOPEN",
+      "market_status": "장중",
       "is_nxt": false,
-      "traded_at": "2026-08-20T08:42:46.43419+09:00",
+      "traded_at": "2026-08-20T09:00:14.647216+09:00",
       "source": "네이버금융(정규장 현재가)"
     }
   },
