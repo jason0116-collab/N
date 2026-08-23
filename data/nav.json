@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-21T12:58:38.988Z",
+  "timestamp": "2026-08-23T23:19:06.020Z",
   "sk_square": {
     "code": "402340",
     "price": {
@@ -8,11 +8,11 @@
       "price": 1123000,
       "change": 0,
       "change_price": 0,
-      "volume": 600147,
+      "volume": 0,
       "market": "코스피",
-      "market_status": "장마감",
+      "market_status": "PREOPEN",
       "is_nxt": false,
-      "traded_at": "2026-08-21T15:30:00+09:00",
+      "traded_at": "2026-08-24T08:19:05.354776+09:00",
       "source": "네이버금융(정규장 현재가)"
     },
     "shares": {
@@ -27,13 +27,13 @@
       "code": "000660",
       "name": "SK하이닉스",
       "price": 1730000,
-      "change": 2.31,
-      "change_price": 39000,
-      "volume": 4247418,
+      "change": 0,
+      "change_price": 0,
+      "volume": 0,
       "market": "코스피",
-      "market_status": "장마감",
+      "market_status": "PREOPEN",
       "is_nxt": false,
-      "traded_at": "2026-08-21T15:30:00+09:00",
+      "traded_at": "2026-08-24T08:19:05.34784+09:00",
       "source": "네이버금융(정규장 현재가)"
     }
   },
