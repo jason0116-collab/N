@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-25T06:19:54.704Z",
+  "timestamp": "2026-08-25T07:23:31.003Z",
   "sk_square": {
     "code": "402340",
     "price": {
@@ -8,11 +8,11 @@
       "price": 1060000,
       "change": -1.49,
       "change_price": -16000,
-      "volume": 485748,
+      "volume": 506863,
       "market": "코스피",
-      "market_status": "장중",
+      "market_status": "장마감",
       "is_nxt": false,
-      "traded_at": "2026-08-25T15:19:53.939901+09:00",
+      "traded_at": "2026-08-25T15:30:00+09:00",
       "source": "네이버금융(정규장 현재가)"
     },
     "shares": {
@@ -26,14 +26,14 @@
     "price": {
       "code": "000660",
       "name": "SK하이닉스",
-      "price": 1686000,
-      "change": 0.9,
-      "change_price": 15000,
-      "volume": 3661485,
+      "price": 1678000,
+      "change": 0.42,
+      "change_price": 7000,
+      "volume": 4013938,
       "market": "코스피",
-      "market_status": "장중",
+      "market_status": "장마감",
       "is_nxt": false,
-      "traded_at": "2026-08-25T15:19:53.93863+09:00",
+      "traded_at": "2026-08-25T15:30:00+09:00",
       "source": "네이버금융(정규장 현재가)"
     }
   },
@@ -41,8 +41,8 @@
     "company": "SK하이닉스(주)",
     "shares": 146100000,
     "ratio": 20.07,
-    "market_value": 246324600000000,
-    "hynix_unit_price": 1686000
+    "market_value": 245155800000000,
+    "hynix_unit_price": 1678000
   },
   "other_investments": [
     {
@@ -73,11 +73,11 @@
   "other_value": 4810000000000,
   "other_value_source": "SK스퀘어 IR (sksquare.com/kor/ir/nav.do)",
   "nav": {
-    "total": 251134600000000,
-    "per_share": 1903135,
+    "total": 249965800000000,
+    "per_share": 1894277,
     "current_price": 1060000,
-    "discount_rate": -44.3,
-    "hynix_stake_value": 246324600000000,
+    "discount_rate": -44.04,
+    "hynix_stake_value": 245155800000000,
     "other_value": 4810000000000,
     "shares_for_nav": 131958386,
     "dart_period": ""
