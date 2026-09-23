@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-09-23T09:29:17.465Z",
+  "timestamp": "2026-09-23T14:23:23.519Z",
   "sk_square": {
     "code": "402340",
     "price": {
       "code": "402340",
       "name": "SK스퀘어",
-      "price": 1180000,
-      "change": 4.15,
-      "change_price": 47000,
-      "volume": 637030,
+      "price": 1181000,
+      "change": 4.24,
+      "change_price": 48000,
+      "volume": 640292,
       "market": "코스피",
-      "market_status": "장중",
+      "market_status": "장마감",
       "is_nxt": false,
-      "traded_at": "2026-09-23T18:29:16.616893+09:00",
+      "traded_at": "2026-09-23T20:00:00+09:00",
       "source": "네이버금융(정규장 현재가)"
     },
     "shares": {
@@ -29,11 +29,11 @@
       "price": 1863000,
       "change": 1.25,
       "change_price": 23000,
-      "volume": 2855335,
+      "volume": 2886116,
       "market": "코스피",
-      "market_status": "장중",
+      "market_status": "장마감",
       "is_nxt": false,
-      "traded_at": "2026-09-23T18:29:16.620267+09:00",
+      "traded_at": "2026-09-23T20:00:00+09:00",
       "source": "네이버금융(정규장 현재가)"
     }
   },
@@ -75,8 +75,8 @@
   "nav": {
     "total": 276994300000000,
     "per_share": 2099103,
-    "current_price": 1180000,
-    "discount_rate": -43.79,
+    "current_price": 1181000,
+    "discount_rate": -43.74,
     "hynix_stake_value": 272184300000000,
     "other_value": 4810000000000,
     "shares_for_nav": 131958386,
