@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-07T11:59:45.029Z",
+  "timestamp": "2026-10-08T02:32:06.775Z",
   "sk_square": {
     "code": "402340",
     "price": {
       "code": "402340",
       "name": "SK스퀘어",
-      "price": 1136000,
-      "change": -2.15,
-      "change_price": -25000,
-      "volume": 545346,
+      "price": 1096000,
+      "change": -4.03,
+      "change_price": -46000,
+      "volume": 275082,
       "market": "코스피",
-      "market_status": "장마감",
+      "market_status": "장중",
       "is_nxt": false,
-      "traded_at": "2026-10-07T20:00:00+09:00",
+      "traded_at": "2026-10-08T11:32:05.92641+09:00",
       "source": "네이버금융(정규장 현재가)"
     },
     "shares": {
@@ -26,14 +26,14 @@
     "price": {
       "code": "000660",
       "name": "SK하이닉스",
-      "price": 1715000,
-      "change": -3.27,
-      "change_price": -58000,
-      "volume": 2607954,
+      "price": 1745500,
+      "change": 1.31,
+      "change_price": 22500,
+      "volume": 1177324,
       "market": "코스피",
-      "market_status": "장마감",
+      "market_status": "장중",
       "is_nxt": false,
-      "traded_at": "2026-10-07T20:00:00+09:00",
+      "traded_at": "2026-10-08T11:32:05.925709+09:00",
       "source": "네이버금융(정규장 현재가)"
     }
   },
@@ -41,8 +41,8 @@
     "company": "SK하이닉스(주)",
     "shares": 146100000,
     "ratio": 20.07,
-    "market_value": 250561500000000,
-    "hynix_unit_price": 1715000
+    "market_value": 255017550000000,
+    "hynix_unit_price": 1745500
   },
   "other_investments": [
     {
@@ -73,11 +73,11 @@
   "other_value": 4810000000000,
   "other_value_source": "SK스퀘어 IR (sksquare.com/kor/ir/nav.do)",
   "nav": {
-    "total": 255371500000000,
-    "per_share": 1935243,
-    "current_price": 1136000,
-    "discount_rate": -41.3,
-    "hynix_stake_value": 250561500000000,
+    "total": 259827550000000,
+    "per_share": 1969011,
+    "current_price": 1096000,
+    "discount_rate": -44.34,
+    "hynix_stake_value": 255017550000000,
     "other_value": 4810000000000,
     "shares_for_nav": 131958386,
     "dart_period": ""
