@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-26T10:23:39.104Z",
+  "timestamp": "2026-10-26T16:52:38.048Z",
   "sk_square": {
     "code": "402340",
     "price": {
       "code": "402340",
       "name": "SK스퀘어",
-      "price": 778000,
-      "change": 0.39,
-      "change_price": 3000,
-      "volume": 386800,
+      "price": 776000,
+      "change": 0.13,
+      "change_price": 1000,
+      "volume": 389333,
       "market": "코스피",
-      "market_status": "장중",
+      "market_status": "장마감",
       "is_nxt": false,
-      "traded_at": "2026-10-26T19:23:38.193376+09:00",
+      "traded_at": "2026-10-26T20:00:00+09:00",
       "source": "네이버금융(정규장 현재가)"
     },
     "shares": {
@@ -29,11 +29,11 @@
       "price": 1290000,
       "change": 1.02,
       "change_price": 13000,
-      "volume": 2425985,
+      "volume": 2446837,
       "market": "코스피",
-      "market_status": "장중",
+      "market_status": "장마감",
       "is_nxt": false,
-      "traded_at": "2026-10-26T19:23:38.195736+09:00",
+      "traded_at": "2026-10-26T20:00:00+09:00",
       "source": "네이버금융(정규장 현재가)"
     }
   },
@@ -55,7 +55,11 @@
     },
     {
       "company": "SK플래닛",
-      "value_jo": 0.61
+      "value_jo": 0.62
+    },
+    {
+      "company": "원스토어",
+      "value_jo": 0.42
     },
     {
       "company": "콘텐츠웨이브",
@@ -63,22 +67,22 @@
     },
     {
       "company": "기타",
-      "value_jo": 0.66
+      "value_jo": 0.56
     },
     {
       "company": "순현금(순차입금)",
-      "value_jo": 0.8
+      "value_jo": 0.79
     }
   ],
-  "other_value": 4810000000000,
-  "other_value_source": "SK스퀘어 IR (sksquare.com/kor/ir/nav.do)",
+  "other_value": 5130000000000,
+  "other_value_source": "폴백 기준값 (IR 조회 실패: HTTP 502)",
   "nav": {
-    "total": 193279000000000,
-    "per_share": 1464697,
-    "current_price": 778000,
-    "discount_rate": -46.88,
+    "total": 193599000000000,
+    "per_share": 1467122,
+    "current_price": 776000,
+    "discount_rate": -47.11,
     "hynix_stake_value": 188469000000000,
-    "other_value": 4810000000000,
+    "other_value": 5130000000000,
     "shares_for_nav": 131958386,
     "dart_period": ""
   },
