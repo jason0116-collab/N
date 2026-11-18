@@ -3,12 +3,6 @@
   "count": 120,
   "series": [
     {
-      "date": "2026-05-22",
-      "price": 1185000,
-      "per_share_nav": 2184553,
-      "discount_rate": -45.76
-    },
-    {
       "date": "2026-05-26",
       "price": 1181000,
       "per_share_nav": 2307449,
@@ -721,6 +715,12 @@
       "price": 675000,
       "per_share_nav": 1253425,
       "discount_rate": -46.15
+    },
+    {
+      "date": "2026-11-18",
+      "price": 696000,
+      "per_share_nav": 1295498,
+      "discount_rate": -46.28
     }
   ]
 }
